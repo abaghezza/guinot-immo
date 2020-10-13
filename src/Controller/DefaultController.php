@@ -84,6 +84,25 @@ class DefaultController extends AbstractController
         return $this->render('default/contact.html.twig');
     }
 	
+	/**
+     * @Route("/apropos", name="apropos")
+     * 
+     */
+	 
+	public function apropos()
+      {
+        return $this->render('default/apropos.html.twig');
+    }
+
+/**
+     * @Route("/affichage", name="affichage")
+     * 
+     */
+	 
+	public function affichage()
+      {
+        return $this->render('default/affichage.html.twig');
+    }
 
 }
 
