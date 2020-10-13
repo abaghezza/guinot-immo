@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guinot-immobilier{% endblock %}
+
+{% block body %}
+
+/ Accueil
+    <div class = "jumbotron">
+        <br> GUINOT IMMOBILIER:</br>
+        <br> ACCESS LOCATION & VENTE D'APPARTEMENTS</br>
+    </div>
+
+<div class="container">
+
+<p> Nous sommes : {{ day }}</p>
+<p></p>
+    {% if day == "mardi" %}
+        <p> Nous Travaillons à la Maison / TELETRAVAIL </p>
+
+     {% else %}
+        <P> Retour au CRP </P>
+    {% endif %}
+
+</div>
+
+{% endblock %}
