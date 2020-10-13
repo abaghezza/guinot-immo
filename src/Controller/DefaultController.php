@@ -29,5 +29,61 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    
+
+	/**
+     * @Route("/vente", name="vente")
+     * 
+     */
+	 
+   public function vente()
+      {
+        return $this->render('default/vente.html.twig');
+    }
+	
+	
+	/**
+     * @Route("/location", name="location")
+     * 
+     */
+	 
+	public function location()
+      {
+        return $this->render('default/location.html.twig');
+    }
+	
+	
+	/**
+     * @Route("/test", name="test")
+     * 
+     */
+	 
+	public function test()
+      {
+        return $this->render('default/test.html.twig');
+    }
+	
+	
+	/**
+     * @Route("/administration", name="administration")
+     * 
+     */
+	 
+	public function administration()
+      {
+        return $this->render('default/administration.html.twig');
+    }
+	
+	
+	/**
+     * @Route("/contact", name="contact")
+     * 
+     */
+	 
+	public function contact()
+      {
+        return $this->render('default/contact.html.twig');
+    }
+	
+
 }
+
