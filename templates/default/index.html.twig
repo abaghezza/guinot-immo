@@ -3,62 +3,32 @@
 {% block title %}Guinot-immobilier{% endblock %}
 
 {% block body %}
-
-/ Accueil
     <div class = "jumbotron">
         <br> GUINOT IMMOBILIER:</br>
         <br> ACCESS LOCATION & VENTE D'APPARTEMENTS</br>
     </div>
 
+-----------------------------------------------------
 <div class="container">
-       <resume>
-            <h2>Nos maisons en location / vente</h2>
-             <div class = "content">
-                <img src="https://via.placeholder.com/400x200" alt=""  align="right">>
-                 <p>On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer </p>
-                 <p align="justify">sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement </p>
-                <a href="/affichage" class="btn btn-primary"> Consultez mon article</a>      
-            </div>          
-       </resume>   
 
-       <resume>
-            <h2>Nos appartements en vente / location</h2>
-             <div class = "content">
-                <img src="https://via.placeholder.com/400x200" alt=""  align="right">>
-                 <p>On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer </p>
-                 <p align="justify">sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement </p>
-                <a href="/affichage" class="btn btn-primary"> Consultez mon article</a>      
-            </div>          
-       </resume>   
-
-       <resume>
-            <h2>Nos terrains en location / vente</h2>
-             <div class = "content">
-                <img src="https://via.placeholder.com/400x200" alt=""  align="right">>
-                 <p>On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer </p>
-                 <p align="justify">sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement </p>
-                <a href="/affichage" class="btn btn-primary"> Consultez mon article</a>      
-            </div>          
-       </resume>   
-       <resume>
-            <h2>Nos hôtels</h2>
-             <div class = "content">
-                <img src="https://via.placeholder.com/400x200" alt=""  align="right">>
-                 <p>On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer </p>
-                 <p align="justify">sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement </p>
-                <a href="/affichage" class="btn btn-primary"> Consultez mon article</a>      
-            </div>          
-       </resume>   
-
-       <resume>
-            <h2>Nos autres bien en location / vente</h2>
-             <div class = "content">
-                <img src="https://via.placeholder.com/400x200" alt=""  align="right">>
-                 <p>On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer </p>
-                 <p align="justify">sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement </p>
-                <a href="affichage" class="btn btn-primary"> Consultez mon article</a>      
-            </div>          
-       </resume>   
+{# Liste de ce que j'aimerai afficher#}
+<div class = "row">
+     {% for immobilier in immobiliers %}     
+          <resume>
+               {# Faisant une interpollation#}
+               <h5>categorie / {{ immobilier.titre }}</h5>
+               <p> Date de publication: {{ immobilier.createdAt | date('d/m/Y')}}</p>
+               <div class = "content">
+                    <img src="{{ immobilier.photo}}" alt=""  align="left">
+                    <p align="justify"> {{ immobilier.description}}   </p> 
+                    <a href="{{ path('index', {'id': immobilier.id })}}" class="btn btn-primary"> Consulter</a>  
+               </div>          
+          </resume>
+          <hr> </hr>
+     {% endfor %} 
 </div>
+
+
+
 
 {% endblock %}

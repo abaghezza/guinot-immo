@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\ImmoVente;
+use render;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -23,13 +25,36 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
+		//connexion a doctrine
+		// connexion au repository
+		$repo = $this->getDoctrine()->getRepository(ImmoVente::class);
+		$immobiliers = $repo->findAll();
         return $this->render('default/index.html.twig', [
-            'day' => "mardi",
+            
             'controller_name' => 'DefaultController',
+			'immobiliers'=>$immobiliers
         ]);
     }
 
 
+/**
+    * @Route("/article/{id}", name="index.affich")
+    */
+    // recuperation de l'identifiant
+    public function affich($id) 
+    {
+        // Appel à Doctrine & au repository
+        $repo = $this->getDoctrine()->getRepository(ImmoVente::class);
+
+        //Recherche de l'article avec son identifiant
+        $immobilier = $repo->find($id);
+        // Passage à Twig de tableau avec des variables à utiliser
+        return $this->render('default/affich.html.twig', [
+            'controller_name' => 'DefaultController',
+            'immobilier' => $immobilier
+        ]);
+    }
+	
 	/**
      * @Route("/vente", name="vente")
      * 
