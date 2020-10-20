@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\LocationRepository;
+use App\Repository\GuinotLocationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=LocationRepository::class)
+ * @ORM\Entity(repositoryClass=GuinotLocationRepository::class)
  */
-class Location
+class GuinotLocation
 {
     /**
      * @ORM\Id
@@ -20,20 +20,20 @@ class Location
     /**
      * @ORM\Column(type="datetime")
      */
-    private $createdat;
+    private $createdAt;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $denommination;
+    private $denomination;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=250)
      */
     private $categorie;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=250)
      */
     private $photo;
 
@@ -43,27 +43,27 @@ class Location
     private $description;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $surface;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $typemaison;
+    private $type_maison;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $chambres;
+    private $chambre;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $etage;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $cout;
 
@@ -73,17 +73,7 @@ class Location
     private $adresse;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $codepostal;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $ville;
-
-    /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $accessibilite;
 
@@ -92,26 +82,26 @@ class Location
         return $this->id;
     }
 
-    public function getCreatedat(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->createdat;
+        return $this->createdAt;
     }
 
-    public function setCreatedat(\DateTimeInterface $createdat): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->createdat = $createdat;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getDenommination(): ?string
+    public function getDenomination(): ?string
     {
-        return $this->denommination;
+        return $this->denomination;
     }
 
-    public function setDenommination(string $denommination): self
+    public function setDenomination(string $denomination): self
     {
-        $this->denommination = $denommination;
+        $this->denomination = $denomination;
 
         return $this;
     }
@@ -133,7 +123,7 @@ class Location
         return $this->photo;
     }
 
-    public function setPhoto(?string $photo): self
+    public function setPhoto(string $photo): self
     {
         $this->photo = $photo;
 
@@ -152,60 +142,60 @@ class Location
         return $this;
     }
 
-    public function getSurface(): ?int
+    public function getSurface(): ?float
     {
         return $this->surface;
     }
 
-    public function setSurface(int $surface): self
+    public function setSurface(float $surface): self
     {
         $this->surface = $surface;
 
         return $this;
     }
 
-    public function getTypemaison(): ?string
+    public function getTypeMaison(): ?string
     {
-        return $this->typemaison;
+        return $this->type_maison;
     }
 
-    public function setTypemaison(string $typemaison): self
+    public function setTypeMaison(string $type_maison): self
     {
-        $this->typemaison = $typemaison;
+        $this->type_maison = $type_maison;
 
         return $this;
     }
 
-    public function getChambres(): ?int
+    public function getChambre(): ?int
     {
-        return $this->chambres;
+        return $this->chambre;
     }
 
-    public function setChambres(int $chambres): self
+    public function setChambre(int $chambre): self
     {
-        $this->chambres = $chambres;
+        $this->chambre = $chambre;
 
         return $this;
     }
 
-    public function getEtage(): ?int
+    public function getEtage(): ?bool
     {
         return $this->etage;
     }
 
-    public function setEtage(int $etage): self
+    public function setEtage(?bool $etage): self
     {
         $this->etage = $etage;
 
         return $this;
     }
 
-    public function getCout(): ?int
+    public function getCout(): ?float
     {
         return $this->cout;
     }
 
-    public function setCout(int $cout): self
+    public function setCout(float $cout): self
     {
         $this->cout = $cout;
 
@@ -224,36 +214,12 @@ class Location
         return $this;
     }
 
-    public function getCodepostal(): ?int
-    {
-        return $this->codepostal;
-    }
-
-    public function setCodepostal(int $codepostal): self
-    {
-        $this->codepostal = $codepostal;
-
-        return $this;
-    }
-
-    public function getVille(): ?string
-    {
-        return $this->ville;
-    }
-
-    public function setVille(string $ville): self
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
     public function getAccessibilite(): ?string
     {
         return $this->accessibilite;
     }
 
-    public function setAccessibilite(string $accessibilite): self
+    public function setAccessibilite(?string $accessibilite): self
     {
         $this->accessibilite = $accessibilite;
 

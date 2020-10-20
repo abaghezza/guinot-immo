@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guinot-immobilier{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+{# Liste de ce que j'aimerai afficher#}
+<div class = "row">
+     {% for GuinotVente in GuinotVente %}     
+          <resume>
+               {# Faisant une interpollation#}
+               <h5>categorie / {{ GuinotVente.denomination }}</h5>
+               <p> Date de publication: {{ GuinotVente.createdAt | date('d/m/Y')}}</p>
+               <div class = "content">
+                    <p align="justify"> {{ GuinotVente.categorie}}   </p> 
+                    <p align="justify"> {{ GuinotVente.description}}   </p> 
+                    <p align="justify">Surface {{ GuinotVente.surface}}   </p> 
+                    <p align="justify"> {{ GuinotVente.TypeMaison}}   </p> 
+                    <p align="justify">Chambrer {{ GuinotVente.chambre}}   </p> 
+                    <p align="justify">Etage{{ GuinotVente.etage}}   </p> 
+                    <p align="justify">Cout{{ GuinotVente.cout}}   </p> 
+                    <p align="justify">{{ GuinotVente.adresse}}   </p> 
+                    <p align="justify"> {{ GuinotVente.accessibilite}}   </p> 
+                    <img src="{{ GuinotVente.photo}}" alt=""  align="left">
+                    <a href="{{ path('les_ventes', {'id': GuinotVente.id })}}" class="btn btn-primary"> Consulter</a>  
+               </div>          
+          </resume>
+          <hr> </hr>
+     {% endfor %} 
+</div>
+
+{% endblock %}

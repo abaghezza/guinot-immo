@@ -85,7 +85,7 @@
         "version": "3.0.1"
     },
     "doctrine/orm": {
-        "version": "2.7.4"
+        "version": "v2.7.3"
     },
     "doctrine/persistence": {
         "version": "2.0.0"

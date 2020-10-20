@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guinot-GuinotLocation{% endblock %}
+
+{% block body %}
+<div class="container">
+
+{# Liste de ce que j'aimerai afficher#}
+<div class = "row">
+     {% for GuinotLocation in GuinotLocation %}     
+          <resume>
+               {# Faisant une interpollation#}
+               <h5>categorie / {{ GuinotLocation.denomination }}</h5>
+               <p> Date de publication: {{ GuinotLocation.createdAt | date('d/m/Y')}}</p>
+               <div class = "content">
+                    <p align="justify"> {{ GuinotLocation.categorie}}   </p> 
+                    <p align="justify"> {{ GuinotLocation.description}}   </p> 
+                    <p align="justify"> {{ GuinotLocation.surface}}   </p> 
+                    <p align="justify"> {{ GuinotLocation.TypeMaison}}   </p> 
+                    <p align="justify"> {{ GuinotLocation.chambre}}   </p> 
+                    <p align="justify"> {{ GuinotLocation.etage}}   </p> 
+                    <p align="justify"> {{ GuinotLocation.cout}}   </p> 
+                    <p align="justify"> {{ GuinotLocation.adresse}}   </p> 
+                    <p align="justify"> {{ GuinotLocation.accessibilite}}   </p> 
+                    <img src="{{ GuinotLocation.photo}}" alt=""  align="left">
+                    <a href="{{ path('les_locations', {'id': GuinotLocation.id })}}" class="btn btn-primary"> Consulter</a>  
+               </div>          
+          </resume>
+          <hr> </hr>
+     {% endfor %} 
+</div>
+
+
+
+{% endblock %}

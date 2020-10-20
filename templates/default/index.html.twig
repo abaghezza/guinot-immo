@@ -13,15 +13,15 @@
 
 {# Liste de ce que j'aimerai afficher#}
 <div class = "row">
-     {% for immobilier in immobiliers %}     
+     {% for immobiliers in immobiliers %}     
           <resume>
                {# Faisant une interpollation#}
-               <h5>categorie / {{ immobilier.titre }}</h5>
-               <p> Date de publication: {{ immobilier.createdAt | date('d/m/Y')}}</p>
+               <h5>categorie / {{ immobiliers.titre }}</h5>
+               <p> Date de publication: {{ immobiliers.createdAt | date('d/m/Y')}}</p>
                <div class = "content">
-                    <img src="{{ immobilier.photo}}" alt=""  align="left">
-                    <p align="justify"> {{ immobilier.description}}   </p> 
-                    <a href="{{ path('index', {'id': immobilier.id })}}" class="btn btn-primary"> Consulter</a>  
+                    <img src="{{ immobiliers.photo}}" alt=""  align="left">
+                    <p align="justify"> {{ immobiliers.description}}   </p> 
+                    <a href="{{ path('index', {'id': immobiliers.id })}}" class="btn btn-primary"> Consulter</a>  
                </div>          
           </resume>
           <hr> </hr>

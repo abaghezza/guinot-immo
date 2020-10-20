@@ -23,9 +23,9 @@ class ImmoVente
     private $titre;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="text")
      */
-    private $createdAt;
+    private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -33,9 +33,9 @@ class ImmoVente
     private $photo;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="datetime")
      */
-    private $description;
+    private $createdAt;
 
     public function getId(): ?int
     {
@@ -54,14 +54,14 @@ class ImmoVente
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getDescription(): ?string
     {
-        return $this->createdAt;
+        return $this->description;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    public function setDescription(string $description): self
     {
-        $this->createdAt = $createdAt;
+        $this->description = $description;
 
         return $this;
     }
@@ -78,14 +78,14 @@ class ImmoVente
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->description;
+        return $this->createdAt;
     }
 
-    public function setDescription(string $description): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->description = $description;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
