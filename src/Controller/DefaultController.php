@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use App\Entity\ImmoVente;
 use App\Entity\GuinotVente;
 use App\Entity\GuinotLocation;
@@ -176,12 +177,12 @@ class DefaultController extends AbstractController
      */
 
     // Creation d'un nouveau Bien
-    public function FormLocation(Request $request)
+    public function FormLocation(Request $request):response
     {
         $entityManager = $this->entityManager;
         $immobilier = new GuinotLocation();
 
-        // Demande de al creation du Formaulaire avec CreateFormBuilder
+        // Demande de la creation du Formulaire avec CreateFormBuilder
         $form = $this->createFormBuilder($immobilier)
             ->add('createdAt')
             ->add('denomination')
@@ -194,15 +195,17 @@ class DefaultController extends AbstractController
             ->add('etage')
             ->add('cout')
             ->add('adresse')
+		         	->add('ville')
+					       ->add('codepostal')
             ->add('accessibilite')
 
-            //Utiser la Function GetForm pour voir le resultat Final
+            //Utiliser la Function GetForm pour voir le resultat Final
             ->getForm();
 
         // Traitement de la requete (http) passée en parametre
         $form->handleRequest($request);
 
-        // Test sur le Remplissage / la soummision et la validité des champs
+        // Test sur le Remplissage / la soummission et la validité des champs
         if ($form->isSubmitted() && $form->isValid()) {
 
             // Affectation de la Date à mon article
