@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Categorie{% endblock %}
+
+{% block body %}
+  {{ include('_header_footers/header_categorie.html.twig') }}
+
+<div class="container">
+
+    {{ include('categorie/_form.html.twig') }}
+
+        
+    <p align="right"><a href="{{ path('categorie_index') }}"><button type="button" class="btn btn-outline-primary">Liste des Gatégorie</button></a></p>
+</div>
+
+
+{% endblock %}

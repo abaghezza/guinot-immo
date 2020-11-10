@@ -1,0 +1,22 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Edit Categorie{% endblock %}
+
+{% block body %}
+  {{ include('_header_footers/header_categorie.html.twig') }}
+<div class="container">
+    {{ include('categorie/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+      <p align="right"> 
+        <button type="button" class="btn btn-outline-primary">
+          <a href="{{ path('categorie_index') }}">Liste des catégories</a>
+        <button>
+      </p>
+
+        <p align="right"> 
+          {{ include('categorie/_delete_form.html.twig') }}
+      </p>
+
+    
+</div>
+{% endblock %}

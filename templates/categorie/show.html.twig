@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %}Categorie{% endblock %}
+{% block body %}
+  {{ include('_header_footers/header_categorie.html.twig') }}
+
+<div class="container">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ categorie.titre }}</td>
+            </tr>
+            <tr>
+                <th>Resume</th>
+                <td>{{ categorie.resume }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div align="right">
+        <tr>
+            <td>
+                <a href="{{ path('categorie_index') }}"><buton class="btn btn-primary"> Liste des catégories</buton></a>
+                <a href="{{ path('categorie_edit', {'id': categorie.id}) }}"><buton class="btn btn-primary">edit </buton></a>
+                <a href="#">{{ include('categorie/_delete_form.html.twig') }}</a>
+            </td>
+        </tr>
+    </div>
+</div>
+{% endblock %}

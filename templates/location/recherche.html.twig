@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guinot-immobilier{% endblock %}
+
+{% block body %}
+
+  {{ include('_header_footers/header_location.html.twig') }}
+
+    <div class="container">
+             <ul>
+               <li><a href="{{path('location.maisons.index', {default:1}) }}"> 1 </a</li>
+               <li><a href="{{path('location.maisons.index', {default:1}) }}"> 2 </a</li>
+
+             <ul>
+          <div class="row" >
+                              {{ form_start(form) }}
+               {%for location in locations | slice(0,length=8) %}
+
+
+               {% endfor%}
+          </div>
+      </div>
+{% endblock %}

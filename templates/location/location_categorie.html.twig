@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guinot-immobilier{% endblock %}
+
+{% block body %}
+
+  {{ include('_header_footers/header_location.html.twig') }}
+
+    <div class="container">
+             <ul>
+               <li><a href="{{path('location.maisons.index', {default:1}) }}"> 1 </a</li>
+               <li><a href="{{path('location.maisons.index', {default:1}) }}"> 2 </a</li>
+
+             <ul>
+          <div class="row" >
+
+               {%for location in locations | slice(0,length=8) %}
+
+
+                    <div class="col-3">
+                         <div class="card">
+                               <img src=" {{ location.photo }} " alt="" width="250">
+                               Publié le: {{location.createdAt | date('d/m/Y') }}
+                              <br>{{location.categorie.titre}}
+                               <ul>
+                                   <br>Adresse: {{location.id}} | {{location.ville}} |
+                                   <br>Surface : {{ location.surface}} M2
+                                   <br>Type : {{ location.type}}
+                                   <br>Prix : {{ location.prix}} € / mois 
+                                   <br>
+                                   <a href="{{ path('location.affich', {'id': location.id}) }}"><button type="button" class="btn btn-info">Consultez </a>
+                               </ul>
+                         </div>
+                    </div>
+               {% endfor%}
+          </div>
+      </div>
+{% endblock %}

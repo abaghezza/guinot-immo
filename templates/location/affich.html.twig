@@ -1,0 +1,58 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Guinot-immobilier{% endblock %}
+
+{% block body %}
+  {{ include('_header_footers/header_affichage.html.twig') }}
+<div class="container">
+    {# Affichage de mon Bien#}
+
+    <affichage>
+      {# Faisant une interpollation#}
+
+      <h3> {{ location.denomination }}</h3>
+      <div class="row">
+          <div class="col-md-3">
+              <p><img src="{{ location.photo}}/850x300" alt=""  align="left"></p>
+              <br>
+              <p> Date de publication: {{ location.createdAt | date('d/m/Y')}}</p>
+          </div>
+        
+          <div class="col-md-1">
+          </div>
+      
+          <div class="col-md-8">
+          <h5>
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Surface : {{ location.surface}} / M2 </li>
+                  <li class="list-group-item">Type : {{ location.type}}   </li>
+                  <li class="list-group-item">Nombre de Chambres :  {{ location.chambre}} </li>
+                  <li class="list-group-item"> Etages : {{ location.etage}}   </li>
+                  <li class="list-group-item">Prix : {{ location.prix}} Euros  </li>
+                  <li class="list-group-item">Ville : {{ location.ville}}  </li>
+                  <li class="list-group-item">Pays : {{ location.pays}}  </li>
+                  <li class="list-group-item">Accessibilité = {{ location.accessibility}} </li>
+                  <li class="list-group-item"> </li>
+              </ul> 
+            </h5>
+          </div>
+            <h5>
+              <p align="justify"> {{ location.description}}   </p> 
+            </h5>
+      </div>
+  
+      <div class = "contenu ">
+         <p align="right"> {# <a href="{{ path('index.affich', {'id': immobilier.id })}}" class="btn btn-primary"> Consulter</a> #} 
+            <a href="{{ path('location.edition', {'id': location.id}) }}"><button type="button" class="btn btn-outline-secondary">Editer</a> 
+            <button class="btn btn-outline-danger">{{ include('location/_delete_form.html.twig') }} </button>
+            {#{{ include('all/_delete_form.html.twig') }}#}
+          </p>
+      </div>     
+      
+                    
+    </affichage>
+      <hr> </hr>
+
+</div>
+
+{% endblock %}

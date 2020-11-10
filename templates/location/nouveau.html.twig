@@ -1,0 +1,19 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Guinot-immobilier{% endblock %}
+
+{% block body %}
+    <div class = "jumbotron">
+            <br> GUINOT IMMOBILIER:</br>
+            <br> ACCESS LOCATION & VENTE D'APPARTEMENTS</br>
+            <h3 style="text-align:center"> Insertion de nouveaux Biens</h3>
+    </div>
+
+    <div class="container">
+        <div class="container">
+            {{ include('location/_form.html.twig') }}
+        <div>
+    </div>
+        </div>
+    </div>
+{% endblock %}

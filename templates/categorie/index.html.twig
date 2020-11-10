@@ -1,0 +1,43 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Categorie index{% endblock %}
+
+{% block body %}
+
+  {{ include('_header_footers/header_categorie.html.twig') }}
+
+<div class="container">
+
+    <table class="table">
+        <a href="{{ path('categorie_new') }}"><button type="button" class="btn-outline-light">Creer une nouvelle Catégorie</a>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Resume</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.id }}</td>
+                <td>{{ categorie.titre }}</td>
+                <td>{{ categorie.resume }}</td>
+                <td>
+                    <a href="{{ path('categorie_show', {'id': categorie.id}) }}"><button type="button" class="btn btn-outline-primary">Lire</a>
+                    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}"><button type="button" class="btn btn-outline-secondary">Editer</a>
+                    {{ include('categorie/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>    
+</div>
+{% endblock %}
